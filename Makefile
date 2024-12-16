@@ -21,9 +21,9 @@ pre-commit-install:
 #* Formatters
 .PHONY: check-codestyle
 check-codestyle:
-	isort --diff --check-only ./
-	black --check ./
-	darglint -v 2 **/*.py
+	python -m isort --diff --check-only ./
+	python -m black --check ./
+	python -m darglint -v 2 **/*.py
 
 #* Linting
 .PHONY: test
