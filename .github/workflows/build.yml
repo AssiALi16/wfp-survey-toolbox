@@ -24,7 +24,7 @@ jobs:
         export PATH="$HOME/.cargo/bin:$PATH"
 
     - name: Set up cache
-      uses: actions/cache@v4.1.2
+      uses: actions/cache@v4.2.0
       with:
         path: .venv
         key: venv-${{ matrix.python-version }}-${{ hashFiles('requirements.txt') }}
