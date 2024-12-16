@@ -43,7 +43,7 @@ make pre-commit-install
 4. Run the codestyle:
 
 ```bash
-make codestyle
+make check-codestyle
 ```
 
 5. Upload initial code to GitHub:
