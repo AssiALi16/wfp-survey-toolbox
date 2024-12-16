@@ -1,7 +1,7 @@
 import pandas as pd
 
 from ..core.base import Indicator
-from ..core.constants import RCSI_COLUMNS, RCSI_THRESHOLDS
+from ..core.constants.rcsi_constants import RCSI_COLUMNS, RCSI_THRESHOLDS
 from ..validation.validators import (
     check_columns_exist,
     check_missing_values,
