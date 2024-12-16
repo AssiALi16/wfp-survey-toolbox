@@ -21,18 +21,29 @@ jobs:
       run: |
         curl -LsSf https://astral.sh/uv/install.sh | sh
         echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+        export PATH="$HOME/.cargo/bin:$PATH"
 
     - name: Set up cache
       uses: actions/cache@v4.1.2
       with:
         path: .venv
         key: venv-${{ matrix.python-version }}-${{ hashFiles('requirements.txt') }}
+        restore-keys: |
+          venv-${{ matrix.python-version }}-
 
     - name: Install dependencies
       run: |
         uv venv .venv
         source .venv/bin/activate
         uv pip install -r requirements.txt
+        uv pip install darglint
+
+    - name: Check installed tools
+      run: |
+        uv --version
+        python -m isort --version
+        python -m black --version
+        darglint --version
 
     - name: Run style checks
       run: |
@@ -43,4 +54,3 @@ jobs:
     - name: Run tests
       run: |
         make test
-
